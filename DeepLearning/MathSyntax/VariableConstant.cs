@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
@@ -32,6 +33,13 @@ namespace MathSyntax
         public override bool IsConstant(VariableArgumentValue Non_Constant)
         {
             return true;
+        }
+
+        public override XElement Serialize()
+        {
+            var i = new XElement("VariableConstant");
+            i.Add(Argument.Serialize());
+            return i;
         }
     }
 }

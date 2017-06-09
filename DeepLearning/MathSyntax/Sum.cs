@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
@@ -79,6 +80,14 @@ namespace MathSyntax
         public double Calculate()
         {
             return A.Calculate() + B.Calculate();
+        }
+
+        public XElement Serialize()
+        {
+            var i = new XElement("Sum");
+            i.Add(A.Serialize());
+            i.Add(B.Serialize());
+            return i;
         }
     }
 }

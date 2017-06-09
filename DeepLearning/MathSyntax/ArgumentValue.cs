@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
     public abstract class ArgumentValue
     {
+        private static int IDCounter = 0;
         /// <summary>
         /// An abstract class which contains the control for the value of a variable or constant variable, as well as the name for printing.
         /// </summary>
@@ -16,9 +18,19 @@ namespace MathSyntax
         {
             this.Name = Name;
             Value = 0;
+            ID = IDCounter;
+            IDCounter++;
         }
         public string Name { get; private set; }
         public double Value { get; set; }
+        public int ID { get; private set; }
+
+        public XElement Serialize()
+        {
+            var thing = new XElement("ArgumentValue");
+            thing.Value = ID.ToString();
+            return thing;
+        }
     }
 
     public class ConstantArgumentValue : ArgumentValue

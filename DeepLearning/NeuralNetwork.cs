@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MathSyntax;
+using System.Xml;
+using System.Xml.Linq;
+using System.IO;
 
 namespace DeepLearning
 {
@@ -96,6 +99,52 @@ namespace DeepLearning
             }
 
             BuildEquations();
+            Save();
+        }
+
+        public void Save()
+        {
+            var input = new XElement("Input");
+            var output = new XElement("Output");
+
+            //XElement root = new XElement("root");
+            
+            foreach(var i in Input)
+            {
+                var inputNeuron = new XElement("InputNeuron");
+                inputNeuron.Value = i.Value.ID.ToString();
+                input.Add(inputNeuron);
+            }
+
+            foreach(var i in OutputFormulas)
+            {
+                var outputNeuron = new XElement("OutputNeuron");
+                var outputFormula = new XElement("OutputForumla");
+                outputFormula.Add(i.Item2.Serialize());
+                var partialDerivatives = new XElement("PartialDerivatives");
+                foreach(var derivative in i.Item3)
+                {
+                    var id = derivative.Item1.Serialize();
+                    var Formula = derivative.Item2.Serialize();
+                    var theDerivative = new XElement("Derivative");
+                    theDerivative.Add(id);
+                    theDerivative.Add(Formula);
+                    partialDerivatives.Add(theDerivative);
+                }
+                outputNeuron.Add(outputFormula);
+                outputNeuron.Add(partialDerivatives);
+                output.Add(outputNeuron);
+            }
+
+            var Root = new XElement("Root");
+            Root.Add(input);
+            Root.Add(output);
+
+            System.Windows.Forms.SaveFileDialog save = new System.Windows.Forms.SaveFileDialog();
+            save.ShowDialog();
+            StreamWriter writer = new StreamWriter(save.FileName);
+            writer.Write(Root.ToString());
+            writer.Close();
         }
 
 

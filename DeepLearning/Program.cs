@@ -36,6 +36,7 @@ namespace DeepLearning
             }
         }
 
+        [STAThreadAttribute]
         static void Main()
         {
             var EngWord = File.ReadAllLines("EN.filtered");
@@ -61,7 +62,7 @@ namespace DeepLearning
             outputs.Add(English);
             outputs.Add(Italian);
 
-            NeuralNetwork LanguageNeuralNet = new NeuralNetwork(allinputs, outputs, new int[] { 100 });
+            NeuralNetwork LanguageNeuralNet = new NeuralNetwork(allinputs, outputs, new int[] { 10 });
 
 
             int counterEN, counterIT;

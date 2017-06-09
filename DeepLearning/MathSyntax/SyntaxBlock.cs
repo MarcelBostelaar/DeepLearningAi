@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
@@ -44,5 +45,10 @@ namespace MathSyntax
         /// </summary>
         /// <returns>The solution</returns>
         double Calculate();
+        /// <summary>
+        /// Serializes elements and all its child elements to x elements.
+        /// </summary>
+        /// <returns>An x element representing this mathsyntax block</returns>
+        XElement Serialize();
     }
 }

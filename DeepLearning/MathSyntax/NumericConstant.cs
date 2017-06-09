@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
@@ -46,6 +47,13 @@ namespace MathSyntax
         public double Calculate()
         {
             return value;
+        }
+
+        public XElement Serialize()
+        {
+            var i = new XElement("NumericConstant");
+            i.Value = value.ToString();
+            return i;
         }
     }
 }

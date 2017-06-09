@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MathSyntax
 {
@@ -11,6 +12,7 @@ namespace MathSyntax
         protected ArgumentValue Argument;
         bool isAlwaysConstant;
 
+    
         public abstract SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive);
 
         protected Abstract_variable(ArgumentValue Argument, bool alwaysConstant)
@@ -36,5 +38,7 @@ namespace MathSyntax
         {
             return Argument.Value;
         }
+
+        public abstract XElement Serialize();
     }
 }
