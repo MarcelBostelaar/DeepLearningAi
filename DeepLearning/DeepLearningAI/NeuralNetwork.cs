@@ -221,6 +221,12 @@ namespace DeepLearning
                 Inputs[index].ID = id;
                 Inputs[index].Value = argumentValuesReal[id].Value;
                 argumentValuesReal[id] = Inputs[index];
+                NewNeuralNet.Input.Add(new InputNeuron(Inputs[index]));
+            }
+
+            for (int i = 0; i < Outputs.Count; i++)
+            {
+                Outputs[i].ID = i;
             }
 
             for (int index = 0; index < Outputs.Count; index++)

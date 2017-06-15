@@ -63,7 +63,7 @@ namespace DeepLearning
             outputs.Add(Italian);
             Italian.MustBeHigh = true;
 
-            bool makeNew = true;
+            bool makeNew = false;
 
             NeuralNetwork LanguageNeuralNet;
 

@@ -45,20 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathSyntax\Abstract variable.cs" />
-    <Compile Include="MathSyntax\ArgumentValue.cs" />
-    <Compile Include="MathSyntax\DerivativeException.cs" />
-    <Compile Include="MathSyntax\Derivatives.cs" />
-    <Compile Include="MathSyntax\NumericConstant.cs" />
-    <Compile Include="MathSyntax\Product.cs" />
-    <Compile Include="MathSyntax\Quotient.cs" />
-    <Compile Include="MathSyntax\Sum.cs" />
-    <Compile Include="MathSyntax\SyntaxBlock.cs" />
-    <Compile Include="MathSyntax\Variable.cs" />
-    <Compile Include="MathSyntax\VariableConstant.cs" />
-    <Compile Include="NeuralNetwork.cs" />
-    <Compile Include="Neurons.cs" />
-    <Compile Include="OutputData.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Abstract variable.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\ArgumentValue.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\DerivativeException.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Derivatives.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\NumericConstant.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Product.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Quotient.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Sum.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\SyntaxBlock.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\Variable.cs" />
+    <Compile Include="DeepLearningAI\MathSyntax\VariableConstant.cs" />
+    <Compile Include="DeepLearningAI\NeuralNetwork.cs" />
+    <Compile Include="DeepLearningAI\Neurons.cs" />
+    <Compile Include="DeepLearningAI\OutputData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
