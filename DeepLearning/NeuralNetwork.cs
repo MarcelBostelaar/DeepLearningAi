@@ -7,6 +7,7 @@ using MathSyntax;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
+using System.Collections.Concurrent;
 
 namespace DeepLearning
 {
@@ -97,9 +98,7 @@ namespace DeepLearning
                     }
                 }
             }
-
             BuildEquations();
-            Save();
         }
 
         private NeuralNetwork() { }
@@ -287,18 +286,17 @@ namespace DeepLearning
 
         public void CalculateResults()
         {
-            foreach(var i in OutputFormulas)
-            {
-                i.Item1.Value = i.Item2.Calculate();
-            }
+            Parallel.ForEach(OutputFormulas, i =>
+                i.Item1.Value = i.Item2.Calculate()
+            );
         }
 
         public void Learn()
         {
-            Dictionary<ArgumentValue, double> TotalSlope = new Dictionary<ArgumentValue, double>();
+            ConcurrentDictionary<ArgumentValue, double> TotalSlope = new ConcurrentDictionary<ArgumentValue, double>();
             foreach(var outputnodeFormulas in OutputFormulas)
             {
-                foreach(var PartialDerivative in outputnodeFormulas.Item3)
+                Parallel.ForEach(outputnodeFormulas.Item3, PartialDerivative =>
                 {
                     double InDict;
                     TotalSlope.TryGetValue(PartialDerivative.Item1, out InDict);
@@ -310,7 +308,7 @@ namespace DeepLearning
                     {
                         TotalSlope[PartialDerivative.Item1] = InDict + PartialDerivative.Item2.Calculate();
                     }
-                }
+                });
             }
 
             var keys = TotalSlope.Keys;

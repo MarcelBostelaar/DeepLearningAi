@@ -63,7 +63,7 @@ namespace DeepLearning
             outputs.Add(Italian);
             Italian.MustBeHigh = true;
 
-            bool makeNew = false;
+            bool makeNew = true;
 
             NeuralNetwork LanguageNeuralNet;
 
@@ -74,6 +74,8 @@ namespace DeepLearning
             else {
                 LanguageNeuralNet = new NeuralNetwork(allinputs, outputs, new int[] { 10 });
 
+                System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
+                timer.Start();
 
                 int counterEN, counterIT;
                 counterEN = 0;
@@ -142,6 +144,7 @@ namespace DeepLearning
                             Wrong++;
                     }
                 }
+                timer.Stop();
                 LanguageNeuralNet.Save();
             }
             
