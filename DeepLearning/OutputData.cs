@@ -10,5 +10,6 @@ namespace DeepLearning
     {
         public bool MustBeHigh { get; set; }
         public double Value { get; set; }
+        public int ID { get; set; }
     }
 }

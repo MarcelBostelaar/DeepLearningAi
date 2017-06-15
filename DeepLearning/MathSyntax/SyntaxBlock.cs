@@ -17,7 +17,7 @@ namespace MathSyntax
         /// </summary>
         /// <param name="Non_Constant">The ArgumentValue which you desire to not be treated as a constant.</param>
         /// <returns></returns>
-        bool IsConstant(VariableArgumentValue Non_Constant);
+        bool IsConstant(ArgumentValue Non_Constant);
         /// <summary>
         /// Prints the formula.
         /// </summary>
@@ -34,7 +34,7 @@ namespace MathSyntax
         /// </summary>
         /// <param name="ArgumentToDerive">The variable for which to calculate the derivative.</param>
         /// <returns>A derivative function of "ArgumentToDerive"</returns>
-        SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive);
+        SyntaxBlock Derivative(ArgumentValue ArgumentToDerive);
         /// <summary>
         /// Simplifies the formula
         /// </summary>

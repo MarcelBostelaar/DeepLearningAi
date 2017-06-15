@@ -12,10 +12,10 @@ namespace MathSyntax
         /// <summary>
         /// Creates a variable.
         /// </summary>
-        /// <param name="Argument">An instance of the VariableArgumentValue class with which the value is controlled.</param>
-        public Variable(VariableArgumentValue Argument) : base(Argument, false) { }
+        /// <param name="Argument">An instance of the ArgumentValue class with which the value is controlled.</param>
+        public Variable(ArgumentValue Argument) : base(Argument, false) { }
 
-        public override SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive)
+        public override SyntaxBlock Derivative(ArgumentValue ArgumentToDerive)
         {
             if(ArgumentToDerive != Argument)
             {
@@ -31,7 +31,7 @@ namespace MathSyntax
             return list;
         }
 
-        public override bool IsConstant(VariableArgumentValue Non_Constant)
+        public override bool IsConstant(ArgumentValue Non_Constant)
         {
             if(Argument != Non_Constant)
             {

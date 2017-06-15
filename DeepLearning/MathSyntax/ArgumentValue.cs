@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace MathSyntax
 {
-    public abstract class ArgumentValue
+    public class ArgumentValue
     {
         private static int IDCounter = 0;
         /// <summary>
@@ -21,9 +21,15 @@ namespace MathSyntax
             ID = IDCounter;
             IDCounter++;
         }
+        public ArgumentValue(double value, int ID)
+        {
+            Name = "";
+            Value = value;
+            this.ID = ID;
+        }
         public string Name { get; private set; }
         public double Value { get; set; }
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
         public XElement Serialize()
         {
@@ -33,20 +39,20 @@ namespace MathSyntax
         }
     }
 
-    public class ConstantArgumentValue : ArgumentValue
-    {
-        /// <summary>
-        /// A class which contains the control for the value of a variable constant, as well as the name for printing.
-        /// </summary>
-        /// <param name="Name">The name to be used for printing, not required for calculations, only for printing. Duplicate names pose no problems for functionality beyond human readability.</param>
-        public ConstantArgumentValue(string Name) : base(Name) { }
-    }
-    public class VariableArgumentValue : ArgumentValue
-    {
-        /// <summary>
-        /// A class which contains the control for the value of a true variable, as well as the name for printing.
-        /// </summary>
-        /// <param name="Name">The name to be used for printing, not required for calculations, only for printing. Duplicate names pose no problems for functionality beyond human readability.</param>
-        public VariableArgumentValue(string Name) : base(Name) { }
-    }
+    //public class ArgumentValue : ArgumentValue
+    //{
+    //    /// <summary>
+    //    /// A class which contains the control for the value of a variable constant, as well as the name for printing.
+    //    /// </summary>
+    //    /// <param name="Name">The name to be used for printing, not required for calculations, only for printing. Duplicate names pose no problems for functionality beyond human readability.</param>
+    //    public ArgumentValue(string Name) : base(Name) { }
+    //}
+    //public class ArgumentValue : ArgumentValue
+    //{
+    //    /// <summary>
+    //    /// A class which contains the control for the value of a true variable, as well as the name for printing.
+    //    /// </summary>
+    //    /// <param name="Name">The name to be used for printing, not required for calculations, only for printing. Duplicate names pose no problems for functionality beyond human readability.</param>
+    //    public ArgumentValue(string Name) : base(Name) { }
+    //}
 }

@@ -12,10 +12,10 @@ namespace MathSyntax
         /// <summary>
         /// Creates a variable constant. Acts as a constant that can have its value changed.
         /// </summary>
-        /// <param name="Argument">An instance of the ConstantArgumentValue class with which the value is controlled.</param>
-        public VariableConstant(ConstantArgumentValue Argument) : base(Argument, true) { }
+        /// <param name="Argument">An instance of the ArgumentValue class with which the value is controlled.</param>
+        public VariableConstant(ArgumentValue Argument) : base(Argument, true) { }
 
-        public override SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive)
+        public override SyntaxBlock Derivative(ArgumentValue ArgumentToDerive)
         {
             return new NumericConstant(0);
         }
@@ -30,7 +30,7 @@ namespace MathSyntax
             return list;
         }
 
-        public override bool IsConstant(VariableArgumentValue Non_Constant)
+        public override bool IsConstant(ArgumentValue Non_Constant)
         {
             return true;
         }

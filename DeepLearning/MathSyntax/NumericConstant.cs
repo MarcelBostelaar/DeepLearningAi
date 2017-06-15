@@ -29,12 +29,12 @@ namespace MathSyntax
             return new List<ArgumentValue>();
         }
 
-        public bool IsConstant(VariableArgumentValue Non_Constant)
+        public bool IsConstant(ArgumentValue Non_Constant)
         {
             return true;
         }
 
-        public SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive)
+        public SyntaxBlock Derivative(ArgumentValue ArgumentToDerive)
         {
             return new NumericConstant(0);
         }

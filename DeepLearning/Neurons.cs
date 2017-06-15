@@ -15,7 +15,7 @@ namespace DeepLearning
             In = new List<NeuronConnection>();
         }
 
-        public void LinkTo(Neuron TargetNeuron, VariableArgumentValue Value)
+        public void LinkTo(Neuron TargetNeuron, ArgumentValue Value)
         {
             var connection = new NeuronConnection(this, TargetNeuron, Value);
             Out.Add(connection);
@@ -42,11 +42,11 @@ namespace DeepLearning
             return new VariableConstant(Value);
         }
 
-        public InputNeuron(ConstantArgumentValue Value)
+        public InputNeuron(ArgumentValue Value)
         {
             this.Value = Value;
         }
-        public ConstantArgumentValue Value { get; private set; }
+        public ArgumentValue Value { get; private set; }
     }
 
     class OutputNeuron : Neuron
@@ -60,13 +60,13 @@ namespace DeepLearning
 
     class NeuronConnection
     {
-        public NeuronConnection(Neuron From, Neuron To, VariableArgumentValue value)
+        public NeuronConnection(Neuron From, Neuron To, ArgumentValue value)
         {
             this.From = From;
             this.To = To;
             this.value = value;
         }
-        public VariableArgumentValue value { get; private set; }
+        public ArgumentValue value { get; private set; }
         Neuron From, To;
 
 

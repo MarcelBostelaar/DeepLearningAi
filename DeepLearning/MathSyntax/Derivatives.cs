@@ -12,15 +12,15 @@ namespace MathSyntax
         /// Calculates all the partial derivatives of a given formula.
         /// </summary>
         /// <param name="Formula">The formula for which to calculate all partial derivatives.</param>
-        /// <returns>A list of tuples, containing the VariableArgumentValue for which it was calculated (item1) and the formula itself(item2).</returns>
-        public static List<Tuple<VariableArgumentValue, SyntaxBlock>> CalculatePartialDerivatives(SyntaxBlock Formula)
+        /// <returns>A list of tuples, containing the ArgumentValue for which it was calculated (item1) and the formula itself(item2).</returns>
+        public static List<Tuple<ArgumentValue, SyntaxBlock>> CalculatePartialDerivatives(SyntaxBlock Formula)
         {
             var AllVariableVariables = Formula.GetAllVariables(true);
             var distinctVariables = AllVariableVariables.Distinct();
-            List<Tuple<VariableArgumentValue, SyntaxBlock>> PartialDerivatives = new List<Tuple<VariableArgumentValue, SyntaxBlock>>();
+            List<Tuple<ArgumentValue, SyntaxBlock>> PartialDerivatives = new List<Tuple<ArgumentValue, SyntaxBlock>>();
             
             foreach (ArgumentValue i in distinctVariables) {
-                PartialDerivatives.Add(new Tuple<VariableArgumentValue, SyntaxBlock>((VariableArgumentValue)i, Formula.Derivative((VariableArgumentValue)i).Simplify()));
+                PartialDerivatives.Add(new Tuple<ArgumentValue, SyntaxBlock>((ArgumentValue)i, Formula.Derivative((ArgumentValue)i).Simplify()));
             }
             return PartialDerivatives;
         }

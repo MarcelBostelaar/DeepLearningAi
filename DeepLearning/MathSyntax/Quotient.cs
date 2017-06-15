@@ -21,7 +21,7 @@ namespace MathSyntax
             return A.Calculate() / B.Calculate();
         }
 
-        public SyntaxBlock Derivative(VariableArgumentValue ArgumentToDerive)
+        public SyntaxBlock Derivative(ArgumentValue ArgumentToDerive)
         {
             //(A'*B + -1(B'*A))/(B*B) == (A'*B - B'*A)/B^2
             return new Quotient(new Sum(new Product(A.Derivative(ArgumentToDerive), B),
@@ -35,7 +35,7 @@ namespace MathSyntax
             return list;
         }
 
-        public bool IsConstant(VariableArgumentValue Non_Constant)
+        public bool IsConstant(ArgumentValue Non_Constant)
         {
             return A.IsConstant(Non_Constant) && B.IsConstant(Non_Constant);
         }
