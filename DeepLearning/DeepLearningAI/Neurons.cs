@@ -32,7 +32,7 @@ namespace DeepLearning
             return Sum;
         }
 
-        List<NeuronConnection> Out, In;
+        public List<NeuronConnection> Out, In;
     }
 
     class InputNeuron : Neuron
@@ -67,7 +67,7 @@ namespace DeepLearning
             this.value = value;
         }
         public ArgumentValue value { get; private set; }
-        Neuron From, To;
+        public Neuron From, To;
 
 
         public SyntaxBlock BuildEquation()

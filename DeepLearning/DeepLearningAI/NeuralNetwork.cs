@@ -175,7 +175,7 @@ namespace DeepLearning
             writer.Write(Root.ToString());
             writer.Close();
         }
-
+        
         public static NeuralNetwork Load(List<ArgumentValue> Inputs, List<OutputData> Outputs)
         {
             NeuralNetwork NewNeuralNet = new NeuralNetwork();
@@ -248,6 +248,49 @@ namespace DeepLearning
 
 
             return NewNeuralNet;
+        }
+
+
+        public void SaveMatrix()
+        {
+            List<double[,]> matrices = new List<double[,]>();
+
+            var firstMatrix = new double[Input.Count, InbetweenLayers[0].Count];
+            for (int x = 0; x < Input.Count; x++)
+            {
+                foreach(var connection in Input[x].Out)
+                {
+                    var y = InbetweenLayers[0].IndexOf(connection.To);
+                    firstMatrix[x, y] = connection.value.Value;
+                }
+            }
+
+            matrices.Add(firstMatrix);
+
+            for (int i = 0; i < InbetweenLayers.Count-1; i++)
+            {
+                var matrix = new double[InbetweenLayers[i].Count, InbetweenLayers[i + 1].Count];
+                for (int x = 0; x < InbetweenLayers[i].Count; x++)
+                {
+                    foreach(var connection in InbetweenLayers[i][x].Out)
+                    {
+                        var y = InbetweenLayers[i + 1].IndexOf(connection.To);
+                        matrix[x, y] = connection.value.Value;
+                    }
+                }
+                matrices.Add(matrix);
+            }
+
+            var lastMatrix = new double[InbetweenLayers.Last().Count, Output.Count];
+            for (int x = 0; x < InbetweenLayers.Last().Count; x++)
+            {
+                foreach (var connection in InbetweenLayers.Last()[x].Out)
+                {
+                    var y = Output.IndexOf((OutputNeuron)connection.To);
+                    lastMatrix[x, y] = connection.value.Value;
+                }
+            }
+            matrices.Add(lastMatrix);
         }
 
         private static SyntaxBlock FromXML(XElement element, Dictionary<int, ArgumentValue> argumentValues)
