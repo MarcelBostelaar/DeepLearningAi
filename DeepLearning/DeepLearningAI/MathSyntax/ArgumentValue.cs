@@ -21,6 +21,13 @@ namespace MathSyntax
             ID = IDCounter;
             IDCounter++;
         }
+        public ArgumentValue(double value)
+        {
+            this.Name = "";
+            Value = value;
+            ID = IDCounter;
+            IDCounter++;
+        }
         public ArgumentValue(double value, int ID)
         {
             Name = "";

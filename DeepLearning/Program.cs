@@ -39,6 +39,7 @@ namespace DeepLearning
         [STAThreadAttribute]
         static void Main()
         {
+
             var EngWord = File.ReadAllLines("EN.filtered");
             var ITWord = File.ReadAllLines("IT.filtered");
 
@@ -69,11 +70,15 @@ namespace DeepLearning
 
             if (!makeNew)
             {
-                LanguageNeuralNet = NeuralNetwork.Load(allinputs, outputs);
+                //LanguageNeuralNet = NeuralNetwork.Load(allinputs, outputs);
+                LanguageNeuralNet = NeuralNetwork.LoadMatrix(allinputs, outputs);
             }
-            else {
+            else
+            {
+                System.Diagnostics.Stopwatch builder = new System.Diagnostics.Stopwatch();
+                builder.Start();
                 LanguageNeuralNet = new NeuralNetwork(allinputs, outputs, new int[] { 10 });
-                LanguageNeuralNet.SaveMatrix();
+                builder.Stop();
 
                 System.Diagnostics.Stopwatch timer = new System.Diagnostics.Stopwatch();
                 timer.Start();
@@ -146,7 +151,7 @@ namespace DeepLearning
                     }
                 }
                 timer.Stop();
-                LanguageNeuralNet.Save();
+                LanguageNeuralNet.SaveMatrix();
             }
             
             int definitiveRight = 0;

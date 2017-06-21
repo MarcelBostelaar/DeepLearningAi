@@ -8,6 +8,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 using System.Collections.Concurrent;
+using System.Globalization;
 
 namespace DeepLearning
 {
@@ -291,6 +292,143 @@ namespace DeepLearning
                 }
             }
             matrices.Add(lastMatrix);
+
+            string File = "";
+            foreach(var matrix in matrices)
+            {
+                for (int y = 0; y < matrix.GetLength(1); y++)
+                {
+                    for (int x = 0; x < matrix.GetLength(0); x++)
+                    {
+                        File += matrix[x, y].ToString(CultureInfo.InvariantCulture);
+                        File += ";";
+                    }
+                    File = File.TrimEnd(';');
+                    File += "\n";
+                }
+                File += "\n";
+            }
+
+            System.Windows.Forms.SaveFileDialog save = new System.Windows.Forms.SaveFileDialog();
+            save.Filter = "Comma Seperated Values (*.csv)|*.csv";
+            save.ShowDialog();
+            StreamWriter writer = new StreamWriter(save.FileName);
+            writer.Write(File);
+            writer.Close();
+        }
+
+        public static NeuralNetwork LoadMatrix(List<ArgumentValue> Inputs, List<OutputData> Outputs)
+        {
+            NeuralNetwork newNeuralNet = new NeuralNetwork();
+
+            System.Windows.Forms.OpenFileDialog open = new System.Windows.Forms.OpenFileDialog();
+            open.Filter = "Comma Seperated Values (*.csv)|*.csv";
+            //open.FileName = "matrixtest.csv";
+            open.ShowDialog();
+            StreamReader reader = new StreamReader(open.FileName);
+            string wholeThing = reader.ReadToEnd();
+            reader.Close();
+
+            var lines = wholeThing.Split('\n');
+
+            var splitElements = from line in lines select line.Split(';');
+
+            int lastSize = 1;
+
+            List<List<List<string>>> stringMatrices = new List<List<List<string>>>();
+
+            foreach(var line in splitElements)
+            {
+                if (line.Length <= 1)
+                {
+                    lastSize = line.Length;
+                }
+                else
+                {
+                    if (line.Length != lastSize)
+                    {
+                        stringMatrices.Add(new List<List<string>>());
+                    }
+                    lastSize = line.Length;
+                    stringMatrices.Last().Add(line.ToList());
+                }
+            }
+
+            List<double[,]> matrices = new List<double[,]>();
+
+            foreach(var i in stringMatrices)
+            {
+                var matrix = new double[i[0].Count, i.Count];
+                for (int x = 0; x < matrix.GetLength(0); x++)
+                {
+                    for (int y = 0; y < matrix.GetLength(1); y++)
+                    {
+                        matrix[x, y] = double.Parse(i[y][x], CultureInfo.InvariantCulture);
+                    }
+                }
+                matrices.Add(matrix);
+            }
+
+            if (Inputs.Count != matrices[0].GetLength(0))
+            {
+                throw new Exception("Inputs do not match with loaded matrix");
+            }
+
+            if (Outputs.Count != matrices.Last().GetLength(1))
+            {
+                throw new Exception("Outputs do not match with loaded matrix");
+            }
+
+
+            foreach (var i in Inputs)//Fill the network with nodes
+            {
+                newNeuralNet.Input.Add(new InputNeuron(i));
+            }
+            foreach (var i in Outputs)//Fill the network with nodes
+            {
+                newNeuralNet.Output.Add(new OutputNeuron(i));
+            }
+
+            //Adds inbetweenlayers for all the inbetween layers
+            for (int i = 0; i < matrices.Count-1; i++)
+            {
+                newNeuralNet.InbetweenLayers.Add(new List<Neuron>());
+                for (int y = 0; y < matrices[i].GetLength(1); y++)
+                {
+                    newNeuralNet.InbetweenLayers[i].Add(new Neuron());
+                }
+            }
+
+            for (int x = 0; x < matrices[0].GetLength(0); x++)
+            {
+                for (int y = 0; y < matrices[0].GetLength(1); y++)
+                {
+                    newNeuralNet.Input[x].LinkTo(newNeuralNet.InbetweenLayers[0][y], new ArgumentValue(matrices[0][x, y]));
+                }
+            }
+
+            for (int i = 0; i < newNeuralNet.InbetweenLayers.Count-1; i++)
+            {
+                for (int y = 0; y < matrices[i+1].GetLength(1); y++)
+                {
+                    for (int x = 0; x < matrices[i + 1].GetLength(0); x++)
+                    {
+                        newNeuralNet.InbetweenLayers[i][x].LinkTo(newNeuralNet.InbetweenLayers[i + 1][y], new ArgumentValue(matrices[i][x, y]));
+                    }
+                }
+            }
+
+            for (int x = 0; x < matrices.Last().GetLength(0); x++)
+            {
+                for (int y = 0; y < matrices.Last().GetLength(1); y++)
+                {
+                    newNeuralNet.InbetweenLayers.Last()[x].LinkTo(newNeuralNet.Output[y], new ArgumentValue(matrices.Last()[x, y]));
+                }
+            }
+
+            newNeuralNet.BuildEquations();
+
+            return newNeuralNet;
         }
 
         private static SyntaxBlock FromXML(XElement element, Dictionary<int, ArgumentValue> argumentValues)
