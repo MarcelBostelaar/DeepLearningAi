@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathSyntax
+namespace DeepLearning.MathSyntax
 {
     class DerivativeException : Exception
     {

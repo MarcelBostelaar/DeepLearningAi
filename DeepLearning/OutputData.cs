@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeepLearning
 {
-    class OutputData
+    public class OutputData
     {
         public bool MustBeHigh { get; set; }
         public double Value { get; set; }

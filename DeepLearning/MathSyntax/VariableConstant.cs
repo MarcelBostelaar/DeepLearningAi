@@ -5,46 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace MathSyntax
+namespace DeepLearning.MathSyntax
 {
-    class Variable : Abstract_variable
+    class VariableConstant : Abstract_variable
     {
         /// <summary>
-        /// Creates a variable.
+        /// Creates a variable constant. Acts as a constant that can have its value changed.
         /// </summary>
         /// <param name="Argument">An instance of the ArgumentValue class with which the value is controlled.</param>
-        public Variable(ArgumentValue Argument) : base(Argument, false) { }
+        public VariableConstant(ArgumentValue Argument) : base(Argument, true) { }
 
         public override SyntaxBlock Derivative(ArgumentValue ArgumentToDerive)
         {
-            if(ArgumentToDerive != Argument)
-            {
-                return new NumericConstant(0);
-            }
-            return new NumericConstant(1);
+            return new NumericConstant(0);
         }
 
         public override List<ArgumentValue> GetAllVariables(bool OnlyNonConstants)
         {
             var list = new List<ArgumentValue>();
-            list.Add(Argument);
+            if (!OnlyNonConstants)
+            {
+                list.Add(Argument);
+            }
             return list;
         }
 
         public override bool IsConstant(ArgumentValue Non_Constant)
         {
-            if(Argument != Non_Constant)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
         public override XElement Serialize()
         {
-            var i = new XElement("Variable");
+            var i = new XElement("VariableConstant");
             i.Add(Argument.Serialize());
             return i;
         }
     }
- }
+}

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DeepLearning")]
+[assembly: AssemblyTitle("DeepLearningTestEnvironment")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DeepLearning")]
+[assembly: AssemblyProduct("DeepLearningTestEnvironment")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b613ca41-642c-4f69-a8ee-8ccd6f0b2d28")]
+[assembly: Guid("14113ec7-1334-4a12-ba9c-01a82f133e47")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MathSyntax;
+using DeepLearning;
+using DeepLearning.MathSyntax;
+
 
 
 namespace DeepLearning

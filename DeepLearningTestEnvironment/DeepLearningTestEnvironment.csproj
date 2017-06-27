@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B613CA41-642C-4F69-A8EE-8CCD6F0B2D28}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeepLearning</RootNamespace>
-    <AssemblyName>DeepLearning</AssemblyName>
+    <ProjectGuid>{14113EC7-1334-4A12-BA9C-01A82F133E47}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DeepLearningTestEnvironment</RootNamespace>
+    <AssemblyName>DeepLearningTestEnvironment</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,21 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MathSyntax\Abstract variable.cs" />
-    <Compile Include="MathSyntax\ArgumentValue.cs" />
-    <Compile Include="MathSyntax\DerivativeException.cs" />
-    <Compile Include="MathSyntax\Derivatives.cs" />
-    <Compile Include="MathSyntax\NumericConstant.cs" />
-    <Compile Include="MathSyntax\Product.cs" />
-    <Compile Include="MathSyntax\Quotient.cs" />
-    <Compile Include="MathSyntax\Sum.cs" />
-    <Compile Include="MathSyntax\SyntaxBlock.cs" />
-    <Compile Include="MathSyntax\Variable.cs" />
-    <Compile Include="MathSyntax\VariableConstant.cs" />
-    <Compile Include="NeuralNetwork.cs" />
-    <Compile Include="Neurons.cs" />
-    <Compile Include="OutputData.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="En.filtered">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="IT.filtered">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DeepLearning\DeepLearning.csproj">
+      <Project>{b613ca41-642c-4f69-a8ee-8ccd6f0b2d28}</Project>
+      <Name>DeepLearning</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

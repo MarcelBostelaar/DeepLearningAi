@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MathSyntax;
+using DeepLearning.MathSyntax;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
@@ -12,7 +12,7 @@ using System.Globalization;
 
 namespace DeepLearning
 {
-    class NeuralNetwork
+    public class NeuralNetwork
     {
         private const double Stepsize = 0.01;
 
@@ -104,6 +104,7 @@ namespace DeepLearning
 
         private NeuralNetwork() { }
 
+        
         public void Save()
         {
             var input = new XElement("Input");
