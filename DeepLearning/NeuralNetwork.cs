@@ -47,6 +47,10 @@ namespace DeepLearning
         /// <param name="InbetweenLayersSize">An array of integers. Each element represents one inbetween layer and its value represents the amount of nodes in that layer.</param>
         public NeuralNetwork(List<ArgumentValue> Inputs, List<OutputData> Outputs, int[] InbetweenLayersSize)
         {
+            if(InbetweenLayersSize.Length < 1)
+            {
+                throw new Exception("Neuralnet requires at least one inbeteen layer.");
+            }
             for (int i = 0; i < Outputs.Count; i++)
             {
                 Outputs[i].ID = i;
