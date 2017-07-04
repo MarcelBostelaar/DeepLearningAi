@@ -12,7 +12,6 @@ namespace Deeplearning2
         Func<double, double> activationDerivative;
         int SizeInputVector, SizeOutputVector;
         Matrix[] matrices;
-        Matrix[] derivatives;
         public NeuralNetwork(IEnumerable<int> layerSizes, ActivationFunction activationFunction)
         {
             switch (activationFunction)
@@ -34,17 +33,15 @@ namespace Deeplearning2
             SizeInputVector = layerSizes.First();
             SizeOutputVector = layerSizes.Last();
             matrices = new Matrix[layerSizes.Count()-1];
-            derivatives = new Matrix[layerSizes.Count() - 1];
-            for (int i = 0; i < matrices.Length-1; i++)
+            for (int i = 0; i < matrices.Length; i++)
             {
                 matrices[i] = new Matrix(layerSizes.ElementAt(i), layerSizes.ElementAt(i + 1));
-                derivatives[i] = new Matrix(layerSizes.ElementAt(i), layerSizes.ElementAt(i + 1));
             }
         }
 
         private void CalculateAllDerivatives(Matrix inputVector, Matrix idealVector)
         {
-            Matrix[] inputvectors = new Matrix[matrices.Length + 1];
+            Matrix[] inputvectors = new Matrix[matrices.Length + 2];
             inputvectors[0] = inputVector;
 
             for (int matrixindex = 0; matrixindex < matrices.Length; matrixindex++)
@@ -71,11 +68,6 @@ namespace Deeplearning2
             for (int i = 0; i < gradients.Length; i++)
             {
                 gradients[i] = smallDelta[i].Multiply(inputvectors[i].Transpose());
-            }
-
-            for (int i = 0; i < matrices.Length; i++)
-            {
-
             }
         }
 

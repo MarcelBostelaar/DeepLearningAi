@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Program - Copy.cs.old" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +57,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Deeplearning2\Deeplearning2.csproj">
+      <Project>{976625bd-35c8-446f-8b45-6f38ccc55585}</Project>
+      <Name>Deeplearning2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DeepLearning\DeepLearning.csproj">
       <Project>{b613ca41-642c-4f69-a8ee-8ccd6f0b2d28}</Project>
       <Name>DeepLearning</Name>
