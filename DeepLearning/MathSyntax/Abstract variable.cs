@@ -38,7 +38,6 @@ namespace DeepLearning.MathSyntax
         {
             return Argument.Value;
         }
-
-        public abstract XElement Serialize();
+        
     }
 }

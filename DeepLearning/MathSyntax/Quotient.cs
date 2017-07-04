@@ -72,17 +72,5 @@ namespace DeepLearning.MathSyntax
             }
             return this; //No simplification possible, return this quotient in its existing state.
         }
-
-        public XElement Serialize()
-        {
-            var i = new XElement("Quotient");
-            var a = new XElement("A");
-            a.Add(A.Serialize());
-            var b = new XElement("B");
-            b.Add(A.Serialize());
-            i.Add(a);
-            i.Add(b);
-            return i;
-        }
     }
 }

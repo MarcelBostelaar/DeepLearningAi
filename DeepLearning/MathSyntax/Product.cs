@@ -79,13 +79,5 @@ namespace DeepLearning.MathSyntax
 
             return this; //No simplification possible, return this sum in its existing state.
         }
-
-        public XElement Serialize()
-        {
-            var i = new XElement("Product");
-            i.Add(A.Serialize());
-            i.Add(B.Serialize());
-            return i;
-        }
     }
 }

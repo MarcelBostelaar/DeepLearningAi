@@ -39,12 +39,5 @@ namespace DeepLearning.MathSyntax
             }
             return false;
         }
-
-        public override XElement Serialize()
-        {
-            var i = new XElement("Variable");
-            i.Add(Argument.Serialize());
-            return i;
-        }
     }
  }

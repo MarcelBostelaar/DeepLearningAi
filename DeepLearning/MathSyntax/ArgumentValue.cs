@@ -37,13 +37,6 @@ namespace DeepLearning.MathSyntax
         public string Name { get; private set; }
         public double Value { get; set; }
         public int ID { get; set; }
-
-        public XElement Serialize()
-        {
-            var thing = new XElement("ArgumentValue");
-            thing.Value = ID.ToString();
-            return thing;
-        }
     }
 
     //public class ArgumentValue : ArgumentValue

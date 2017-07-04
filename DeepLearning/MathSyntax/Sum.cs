@@ -81,13 +81,5 @@ namespace DeepLearning.MathSyntax
         {
             return A.Calculate() + B.Calculate();
         }
-
-        public XElement Serialize()
-        {
-            var i = new XElement("Sum");
-            i.Add(A.Serialize());
-            i.Add(B.Serialize());
-            return i;
-        }
     }
 }

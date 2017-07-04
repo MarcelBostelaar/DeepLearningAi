@@ -48,12 +48,5 @@ namespace DeepLearning.MathSyntax
         {
             return value;
         }
-
-        public XElement Serialize()
-        {
-            var i = new XElement("NumericConstant");
-            i.Value = value.ToString();
-            return i;
-        }
     }
 }
