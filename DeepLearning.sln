@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearningTestEnvironment", "DeepLearningTestEnvironment\DeepLearningTestEnvironment.csproj", "{14113EC7-1334-4A12-BA9C-01A82F133E47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLearning", "DeepLearning\DeepLearning.csproj", "{B613CA41-642C-4F69-A8EE-8CCD6F0B2D28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deeplearning2", "Deeplearning2\Deeplearning2.csproj", "{976625BD-35C8-446F-8B45-6F38CCC55585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B613CA41-642C-4F69-A8EE-8CCD6F0B2D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B613CA41-642C-4F69-A8EE-8CCD6F0B2D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B613CA41-642C-4F69-A8EE-8CCD6F0B2D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{976625BD-35C8-446F-8B45-6F38CCC55585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976625BD-35C8-446F-8B45-6F38CCC55585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976625BD-35C8-446F-8B45-6F38CCC55585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976625BD-35C8-446F-8B45-6F38CCC55585}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

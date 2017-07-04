@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Deeplearning2
 {
-    public class Class1
+    public enum ActivationFunction
     {
+        LogisticFunction
     }
 }
